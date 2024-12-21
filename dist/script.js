@@ -64,7 +64,13 @@ function createCard(obj) {
     "text-sm",
     "cursor-pointer"
   );
-  readBtn.innerText = `Not Read Yet`;
+  if (obj.readStatus) {
+    readBtn.classList.remove("bg-yellow-300");
+    readBtn.classList.add("bg-green-300");
+    readBtn.innerText = `Read`;
+  } else {
+    readBtn.innerText = `Not Read Yet`;
+  }
   btnDiv.appendChild(readBtn);
   const deleteBtn = document.createElement("div");
   deleteBtn.classList.add(
