@@ -4,8 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/5593a2500e.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Book Tracker</title>
   </head>
-  <body></body>
+  <body>
+    <nav class="flex justify-between items-center p-3 bg-slate-300">
+      <div class="font-medium">
+        <i class="fa-solid fa-book-open-reader mr-2"></i> BookTracker
+      </div>
+      <i
+        class="fa-solid fa-plus cursor-pointer border-2 border-slate-800 p-2 rounded-xl"
+      ></i>
+    </nav>
+    <!-- container -->
+    <div
+      class="allBookContainer m-5 mt-16 md:m-10 flex gap-8 flex-wrap justify-center md:justify-start"
+    >
+      <!-- book container -->
+      <div
+        class="border-2 border-slate-400 text-slate-800 p-4 w-full sm:w-72 rounded-xl shadow-xl"
+      >
+        <div class="text-xl font-medium">Title</div>
+        <div class="flex justify-between my-3">
+          <div>Author</div>
+          <div class="text-[12px] text-slate-700">Pages</div>
+        </div>
+        <div>
+          <button class="mr-3 bg-yellow-300 p-1 px-2 rounded-lg text-sm">
+            ReadStatus
+          </button>
+          <button class="mr-3 bg-red-300 p-1 px-2 rounded-lg text-sm">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
   <script src="script.js"></script>
 </html>
