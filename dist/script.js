@@ -127,7 +127,7 @@ document.querySelectorAll(".delete-btn").forEach((item) => {
   item.addEventListener("click", () => {
     const bookName = item.parentElement.parentElement.childNodes[0].textContent;
     const index = indexOfBook(bookName);
-    allBooks.splice(index, index);
+    allBooks.splice(index, 1);
     item.parentElement.parentElement.remove();
   });
 });
