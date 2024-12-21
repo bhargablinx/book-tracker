@@ -117,24 +117,30 @@ function closeModal() {
   document.querySelector(".bookModal").classList.add("hidden");
 }
 
-document.querySelectorAll(".read-btn").forEach((item) => {
-  item.addEventListener("click", () => {
-    const bookName = item.parentElement.parentElement.childNodes[0].textContent;
-    const index = indexOfBook(bookName);
-    allBooks[index].readStatus =
-      allBooks[index].readStatus == false ? true : false;
-    toggleReadBtn(item, allBooks[index].readStatus);
+function readBookDOM() {
+  document.querySelectorAll(".read-btn").forEach((item) => {
+    item.addEventListener("click", () => {
+      const bookName =
+        item.parentElement.parentElement.childNodes[0].textContent;
+      const index = indexOfBook(bookName);
+      allBooks[index].readStatus =
+        allBooks[index].readStatus == false ? true : false;
+      toggleReadBtn(item, allBooks[index].readStatus);
+    });
   });
-});
+}
 
-document.querySelectorAll(".delete-btn").forEach((item) => {
-  item.addEventListener("click", () => {
-    const bookName = item.parentElement.parentElement.childNodes[0].textContent;
-    const index = indexOfBook(bookName);
-    allBooks.splice(index, 1);
-    item.parentElement.parentElement.remove();
+function deleteBookDOM() {
+  document.querySelectorAll(".delete-btn").forEach((item) => {
+    item.addEventListener("click", () => {
+      const bookName =
+        item.parentElement.parentElement.childNodes[0].textContent;
+      const index = indexOfBook(bookName);
+      allBooks.splice(index, 1);
+      item.parentElement.parentElement.remove();
+    });
   });
-});
+}
 
 document.querySelector(".fa-plus").addEventListener("click", () => {
   document.querySelector(".bookModal").classList.remove("hidden");
@@ -150,4 +156,9 @@ document.querySelector(".submitBtn").addEventListener("click", (e) => {
   console.log(b);
   e.preventDefault();
   closeModal();
+  readBookDOM();
+  deleteBookDOM();
 });
+
+readBookDOM();
+deleteBookDOM();
