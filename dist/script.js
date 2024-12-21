@@ -120,6 +120,14 @@ document.querySelectorAll(".read-btn").forEach((item) => {
     allBooks[index].readStatus =
       allBooks[index].readStatus == false ? true : false;
     toggleReadBtn(item, allBooks[index].readStatus);
-    // console.log(allBooks[index].readStatus);
+  });
+});
+
+document.querySelectorAll(".delete-btn").forEach((item) => {
+  item.addEventListener("click", () => {
+    const bookName = item.parentElement.parentElement.childNodes[0].textContent;
+    const index = indexOfBook(bookName);
+    allBooks.splice(index, index);
+    item.parentElement.parentElement.remove();
   });
 });
