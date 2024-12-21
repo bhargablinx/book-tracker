@@ -180,7 +180,7 @@ document.querySelector(".submitBtn").addEventListener("click", (e) => {
   createCard(allBooks[allBooks.length - 1]);
   console.log(b);
   // e.preventDefault();
-  closeModal();
+  // closeModal();
   readBookDOM();
   deleteBookDOM();
 });
