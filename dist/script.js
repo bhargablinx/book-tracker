@@ -132,9 +132,9 @@ function readBookDOM() {
       const index = indexOfBook(bookName);
       allBooks[index].readStatus =
         allBooks[index].readStatus == false ? true : false;
+      pushToLocal();
       toggleReadBtn(item, allBooks[index].readStatus);
     });
-    pushToLocal();
   });
 }
 
