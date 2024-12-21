@@ -113,6 +113,10 @@ function toggleReadBtn(btn, readStatus) {
   }
 }
 
+function closeModal() {
+  document.querySelector(".bookModal").classList.add("hidden");
+}
+
 document.querySelectorAll(".read-btn").forEach((item) => {
   item.addEventListener("click", () => {
     const bookName = item.parentElement.parentElement.childNodes[0].textContent;
@@ -130,4 +134,20 @@ document.querySelectorAll(".delete-btn").forEach((item) => {
     allBooks.splice(index, 1);
     item.parentElement.parentElement.remove();
   });
+});
+
+document.querySelector(".fa-plus").addEventListener("click", () => {
+  document.querySelector(".bookModal").classList.remove("hidden");
+});
+
+document.querySelector(".submitBtn").addEventListener("click", (e) => {
+  const title = document.querySelector("#bookTitle").value;
+  const author = document.querySelector("#author").value;
+  const pages = parseInt(document.querySelector("#pages").value);
+  const b = new Book(title, author, pages);
+  addToArray(b);
+  createCard(allBooks[allBooks.length - 1]);
+  console.log(b);
+  e.preventDefault();
+  closeModal();
 });
