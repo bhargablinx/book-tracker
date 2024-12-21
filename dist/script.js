@@ -179,7 +179,7 @@ document.querySelector(".submitBtn").addEventListener("click", (e) => {
   pushToLocal();
   createCard(allBooks[allBooks.length - 1]);
   console.log(b);
-  e.preventDefault();
+  // e.preventDefault();
   closeModal();
   readBookDOM();
   deleteBookDOM();
