@@ -1,4 +1,5 @@
-const allBooks = [];
+let allBooks = [];
+pullFromLocal();
 
 function Book(title, author, pages, readStatus = false) {
   this.title = title;
@@ -11,14 +12,14 @@ function addToArray(data) {
   allBooks.push(data);
 }
 
-let b1 = new Book("Atomic Habits", "James Clear", 290);
-let b2 = new Book("Eat That Frog", "Brian Tracy", 150);
-let b3 = new Book("A Song of Ice & Fire", "G.R.R Martin", 1480);
-let b4 = new Book("The Hobbit", "J.R.R. Tolkien", 295);
-addToArray(b1);
-addToArray(b2);
-addToArray(b3);
-addToArray(b4);
+// let b1 = new Book("Atomic Habits", "James Clear", 290);
+// let b2 = new Book("Eat That Frog", "Brian Tracy", 150);
+// let b3 = new Book("A Song of Ice & Fire", "G.R.R Martin", 1480);
+// let b4 = new Book("The Hobbit", "J.R.R. Tolkien", 295);
+// addToArray(b1);
+// addToArray(b2);
+// addToArray(b3);
+// addToArray(b4);
 
 function createCard(obj) {
   const bookContainer = document.createElement("div");
@@ -127,6 +128,7 @@ function readBookDOM() {
         allBooks[index].readStatus == false ? true : false;
       toggleReadBtn(item, allBooks[index].readStatus);
     });
+    pushToLocal();
   });
 }
 
@@ -137,9 +139,25 @@ function deleteBookDOM() {
         item.parentElement.parentElement.childNodes[0].textContent;
       const index = indexOfBook(bookName);
       allBooks.splice(index, 1);
+      pushToLocal();
       item.parentElement.parentElement.remove();
     });
   });
+}
+
+function pushToLocal() {
+  const data = JSON.stringify(allBooks);
+  localStorage.setItem(0, data);
+}
+
+function pullFromLocal() {
+  const res = JSON.parse(localStorage.getItem(0));
+  if (res.length != 0) {
+    allBooks = res;
+    console.log("Books loaded succesfully");
+  } else {
+    console.log("No Book in local storage");
+  }
 }
 
 document.querySelector(".fa-plus").addEventListener("click", () => {
@@ -152,6 +170,7 @@ document.querySelector(".submitBtn").addEventListener("click", (e) => {
   const pages = parseInt(document.querySelector("#pages").value);
   const b = new Book(title, author, pages);
   addToArray(b);
+  pushToLocal();
   createCard(allBooks[allBooks.length - 1]);
   console.log(b);
   e.preventDefault();
